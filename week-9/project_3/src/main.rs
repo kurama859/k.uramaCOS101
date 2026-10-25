@@ -9,20 +9,13 @@ fn main() {
     // zones vector
     let zones = vec![ "South West", "North East", "South South", "South West", "South East"];
 
+    
     for i in 0..commissioners.len(){
         //iterize through i on vector the vector
-      let mut statement = String::new();
-        statement.push_str("Commissioner ");
-        statement.push_str(commissioners[i]);
-        statement.push_str(", minister of ");
-        statement.push_str(ministries[i]);
-        statement.push_str("from");
-        statement.push_str(zones[i]);
-        statement.push_str(" region has been charged and convicted.\n");
-
-        file.write_all(statement.as_bytes()).expect("failed to write statement");
-        print!("{}", statement);
+         let statement = format!("Commissioner {} Minister {} from the {} region has been convicted based on investigations carried out on the Abuja incident.\n",commissioners[i],ministries[i],zones[i]);
+         file.write_all(statement.as_bytes()).expect("failed to write row");
+         print!("{} \n", statement);
     }
-        println!("\nData written to THE EFCC MERGE.txt");
-    
+
+    print!("Data written")
 }
